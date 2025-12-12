@@ -1,1 +1,40 @@
-<h1 class="text-green-500">test</h1>
+<div class="page-1 animate__animated" animate.enter="animate__fadeInLeftBig">
+    <div>
+        <h1>Davna's Winter Wonderland</h1>
+        <h1>Sweet 16</h1>
+    </div>
+
+    <div>
+        <h3>Hosted By</h3>
+        <h2>David and Lorena Ceron</h2>
+        <h3>March 8, 2026</h3>
+    </div>
+</div>
+
+<div class="page-2 animate__animated" animate.enter="animate__fadeInLeftBig">
+    <h1>The Details</h1>
+
+    @for (item of details; track $index) {
+        <div class="flex items-center gap-8">
+            <div class="circle h-8 w-8 rounded-full bg-orange-300">
+                <img [src]="item.img" alt="">
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <h3>{{item.title}}</h3>
+                <ul>
+                    @for (listItem of item.list; track $index) {
+                        <li>{{listItem}}</li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="page-3 animate__animated" animate.enter="animate__fadeInLeftBig">
+    <h1>RSVP</h1>
+    <h3>by January 14</h3>
+
+    <iframe src="https://invitarium.io/f/913807633c09c40309" frameborder="0" class="h-[500px] w-[1000px]"></iframe>
+</div> 
