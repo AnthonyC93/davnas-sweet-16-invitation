@@ -1,12 +1,20 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, DOCUMENT, HostListener, inject, signal } from '@angular/core';
+import { CanvasService } from './services/canvas.service';
+import { WINDOW } from './constants';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-root',
+  providers: [Document, CanvasService],
   templateUrl: './app.html',
-  styleUrl: './app.scss'
+  styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('davna-sweet');
+  doc = inject(DOCUMENT);
+  window = inject(WINDOW);
+  canvasService = inject(CanvasService);
+  canvasElS = signal<HTMLCanvasElement | null>(null);
+  context = computed(()=> this.canvasElS()?.getContext('2d'));
   details = [
     {
       title: 'Date & time',
@@ -24,5 +32,30 @@ export class App {
       list: ['Winter Theme', "Please do not wear bluie"]
     }
   ]
+  width = this.window.innerWidth;
+  height = this.window.innerHeight;
 
+  ngAfterViewInit() {
+    this.canvasElS.set(<HTMLCanvasElement>this.doc.getElementById('canvas'));
+    this.width = this.window.innerWidth;
+    this.canvasElS()!.width = this.window.innerWidth;
+    this.height = this.window.innerHeight;
+    this.canvasElS()!.height = this.window.innerHeight;
+    this.setUpSnowflakes();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(e) {
+    this.width = this.window.innerWidth;
+    this.canvasElS()!.width = this.window.innerWidth;
+    this.height = this.window.innerHeight;
+    this.canvasElS()!.height = this.window.innerHeight;
+  }
+
+  setUpSnowflakes() {
+    interval(25).subscribe(()=>{
+      this.canvasService.updateSnowFall(this.context(), this.width, this.height);
+    })
+    this.canvasService.createSnowflakes(this.width, this.height);
+  }
 }
