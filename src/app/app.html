@@ -1,20 +1,19 @@
 <canvas id="canvas"></canvas>
 
 <div class="safe-area">
-    <div class="page-1 animate__animated text-xl" animate.enter="animate__fadeInLeftBig">
+    <div class="page-1 animate__animated text-xl h-screen flex flex-col gap-8 justify-center items-center" animate.enter="animate__fadeInLeft">
         <div>
-            <h1>Davna's Winter Wonderland</h1>
-            <h1>Sweet 16</h1>
+            <h2>You are invited to</h2>
+            <h1 class="script">Davna Ceron's</h1>
         </div>
     
         <div>
-            <h3>Hosted By</h3>
-            <h2>David and Lorena Ceron</h2>
-            <h3>March 8, 2026</h3>
+            <h1 class="script">Sweet 16</h1>
+            <h2>March 8, 2026</h2>
         </div>
     </div>
     
-    <div class="page-2 animate__animated" animate.enter="animate__fadeInLeftBig">
+    <div class="page-2 animate__animated h-screen flex flex-col gap-8 justify-center items-center" animate.enter="animate__fadeInLeft">
         <h1>The Details</h1>
     
         @for (item of details; track $index) {
@@ -35,7 +34,7 @@
         }
     </div>
     
-    <div class="page-3 animate__animated" animate.enter="animate__fadeInLeftBig">
+    <div class="page-3 animate__animated h-screen flex flex-col gap-8 justify-center items-center" animate.enter="animate__fadeInLeft">
         <h1>RSVP</h1>
         <h3>by January 14</h3>
     

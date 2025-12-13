@@ -11,6 +11,8 @@ export interface ParticleData {
 
 @Injectable()
 export class CanvasService {
+  // https://www.youtube.com/watch?v=50teKYVaQgc&t=50s
+  // https://rgbacolorpicker.com/hex-to-rgba
   particlesOnScreen = 275;
   particlesArray: ParticleData[] = [];
 

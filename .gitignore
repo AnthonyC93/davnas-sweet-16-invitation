@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /bazel-out
+./docs/
 
 # Node
 /node_modules
@@ -42,4 +43,3 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 
-/docs
