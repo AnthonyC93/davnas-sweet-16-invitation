@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "outputPath": "docs"
           },
           "configurations": {
             "production": {
@@ -55,8 +56,7 @@
               "sourceMap": true
             }
           },
-          "defaultConfiguration": "production",
-          "outputPath": "/dist"
+          "defaultConfiguration": "production"
         },
         "serve": {
           "builder": "@angular/build:dev-server",
@@ -72,6 +72,9 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
